@@ -11,12 +11,18 @@ Run:
     python flask_backend.py
 """
 
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, send_file
 from flask_cors import CORS
 from datetime import datetime
 import re
 
 app = Flask(__name__)
+CORS(app) 
+
+@app.route("/")
+def home():
+    return send_file("moodmate.html")
+
 CORS(app)  # allow the React/HTML frontend to call this during development
 
 # ---------------------------------------------------------------------------
